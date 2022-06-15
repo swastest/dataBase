@@ -3,6 +3,7 @@ package actions;
 import config.AuthUsers;
 import connectBD.DataSourceProvider;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
@@ -40,13 +41,16 @@ public class GetFromDataBase {
         return a;
     }
     public void deleteUser(Integer value) {
-        String delUser = "DELETE phone_call_confirm_code FROM app_user WHERE id = :userId";
+        String delUser = "DELETE FROM app_user WHERE id = :userId";
         Map<String, Object> map = new HashMap<>();
         map.put("userId", value);
-        List<String> confirmCodeSms = namedParameterJdbcTemplate.execute(delUser,map, ЗАСТРЯЛА ТУТ );
-        // знаю, что это делается через namedParameterJdbcTemplate.execute   а дальше ХЗ
+        namedParameterJdbcTemplate.update(delUser,map);
 
     }
 
+    @Test
+    void test01(){
+        deleteUser(2);
+    }
 
 }
