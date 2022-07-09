@@ -32,11 +32,11 @@ public class LicUiApi {
     System.out.println(tokenValue);
 
     String headerName = "Authorization";
-    open(conf.url()+"/wp-content/themes/liveinclean/img/sun.png");
+    open(conf.urlUi()+"/wp-content/themes/liveinclean/img/sun.png");
     Cookie authCookie = new Cookie(headerName, tokenValue);
     Header he = new Header(headerName,tokenValue);
     WebDriverRunner.getWebDriver().manage().addCookie(authCookie);
-    open(conf.url()+"/front/statistics-orders");
+    open(conf.urlUi()+"/front/statistics-orders");
 
 
 

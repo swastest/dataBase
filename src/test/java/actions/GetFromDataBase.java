@@ -25,9 +25,9 @@ public class GetFromDataBase {
         map.put("phoneNumber", config.loginExecutor());
         //rs - resultSet   i - строка номер
         List<String> confirmCodeSms = namedParameterJdbcTemplate.query(sqlConfirmCode, map, (rs, i) -> rs.getString("phone_confirm_code"));
-        String a = confirmCodeSms.get(0);
-        return a;
+        return confirmCodeSms.get(0);
     }
+
 
     public String findConfirmCallCodeExecutor() {
         //      String sqlConfirmCode = "SELECT phone_call_confirm_code FROM app_user WHERE id = :userId";
@@ -37,8 +37,7 @@ public class GetFromDataBase {
         map.put("roleName", "ROLE_EXECUTOR");
         map.put("phoneNumber", config.loginExecutor());
         List<String> confirmCodeSms = namedParameterJdbcTemplate.query(sqlConfirmCode, map, (rs, i) -> rs.getString("phone_call_confirm_code"));
-        String a = confirmCodeSms.get(0);
-        return a;
+        return confirmCodeSms.get(0);
     }
     public void deleteUser(Integer value) {
         String delUser = "DELETE FROM app_user WHERE id = :userId";
